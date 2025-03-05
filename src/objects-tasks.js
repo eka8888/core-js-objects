@@ -18,7 +18,7 @@
  *    shallowCopy({}) => {}
  */
 function shallowCopy(obj) {
-    return { ...obj }
+  return { ...obj };
 }
 
 /**
@@ -33,17 +33,7 @@ function shallowCopy(obj) {
  *    mergeObjects([]) => {}
  */
 function mergeObjects(objects) {
-    return objects
-    // return objects.reduce((acc, obj) => {
-    //     Object.keys(obj).forEach((key) => {
-    //         if (acc.hasOwnProperty(key)) {
-    //             acc[key] += obj[key]
-    //         } else {
-    //             acc[key] = obj[key]
-    //         }
-    //     })
-    //     return acc
-    // }, {})
+  return objects;
 }
 
 /**
@@ -60,11 +50,11 @@ function mergeObjects(objects) {
  *
  */
 function removeProperties(obj, keys) {
-    const newObj = { ...obj }
-    keys.forEach((key) => {
-        delete newObj[key]
-    })
-    return newObj
+  const newObj = { ...obj };
+  keys.forEach((key) => {
+    delete newObj[key];
+  });
+  return newObj;
 }
 
 /**
@@ -80,11 +70,11 @@ function removeProperties(obj, keys) {
  *    compareObjects({a: 1, b: 2}, {a: 1, b: 3}) => false
  */
 function compareObjects(obj1, obj2) {
-    if (Object.keys(obj1).length !== Object.keys(obj2).length) {
-        return false
-    }
+  if (Object.keys(obj1).length !== Object.keys(obj2).length) {
+    return false;
+  }
 
-    return Object.keys(obj1).every((key) => obj1[key] === obj2[key])
+  return Object.keys(obj1).every((key) => obj1[key] === obj2[key]);
 }
 
 /**
@@ -99,7 +89,7 @@ function compareObjects(obj1, obj2) {
  *    isEmptyObject({a: 1}) => false
  */
 function isEmptyObject(obj) {
-    return Object.keys(obj).length === 0
+  return Object.keys(obj).length === 0;
 }
 
 /**
@@ -119,7 +109,7 @@ function isEmptyObject(obj) {
  *    console.log(immutableObj) => {a: 1, b: 2}
  */
 function makeImmutable(obj) {
-    return Object.freeze(obj)
+  return Object.freeze(obj);
 }
 
 /**
@@ -133,15 +123,15 @@ function makeImmutable(obj) {
  *    makeWord({ H:[0], e: [1], l: [2, 3, 8], o: [4, 6], W:[5], r:[7], d:[9]}) => 'HelloWorld'
  */
 function makeWord(lettersObject) {
-    let result = ''
+  let result = '';
 
-    Object.keys(lettersObject).forEach((letter) => {
-        const letterCount = lettersObject[letter].length
+  Object.keys(lettersObject).forEach((letter) => {
+    const letterCount = lettersObject[letter].length;
 
-        result += letter.repeat(letterCount)
-    })
+    result += letter.repeat(letterCount);
+  });
 
-    return result
+  return result;
 }
 
 /**
@@ -159,31 +149,31 @@ function makeWord(lettersObject) {
  *    sellTickets([25, 100]) => false (The seller does not have enough money to give change.)
  */
 function sellTickets(queue) {
-    return queue
-    // let twentyFive = 0
-    // let fifty = 0
-    // for (let i = 0; i < queue.length; i++) {
-    //     const bill = queue[i]
-    //     if (bill === 25) {
-    //         twentyFive++
-    //     } else if (bill === 50) {
-    //         if (twentyFive === 0) {
-    //             return false
-    //         }
-    //         twentyFive--
-    //         fifty++
-    //     } else if (bill === 100) {
-    //         if (fifty > 0 && twentyFive > 0) {
-    //             fifty--
-    //             twentyFive--
-    //         } else if (twentyFive >= 3) {
-    //             twentyFive -= 3
-    //         } else {
-    //             return false
-    //         }
-    //     }
-    // }
-    // return true
+  return queue;
+  // let twentyFive = 0
+  // let fifty = 0
+  // for (let i = 0; i < queue.length; i++) {
+  //     const bill = queue[i]
+  //     if (bill === 25) {
+  //         twentyFive++
+  //     } else if (bill === 50) {
+  //         if (twentyFive === 0) {
+  //             return false
+  //         }
+  //         twentyFive--
+  //         fifty++
+  //     } else if (bill === 100) {
+  //         if (fifty > 0 && twentyFive > 0) {
+  //             fifty--
+  //             twentyFive--
+  //         } else if (twentyFive >= 3) {
+  //             twentyFive -= 3
+  //         } else {
+  //             return false
+  //         }
+  //     }
+  // }
+  // return true
 }
 
 /**
@@ -200,12 +190,12 @@ function sellTickets(queue) {
  *    console.log(r.getArea());   // => 200
  */
 function Rectangle(width, height) {
-    this.width = width
-    this.height = height
+  this.width = width;
+  this.height = height;
 
-    // this.getArea = function () {
-    return this.width * this.height
-    // }
+  // this.getArea = function () {
+  return this.width * this.height;
+  // }
 }
 
 /**
@@ -219,7 +209,7 @@ function Rectangle(width, height) {
  *    { height: 10, width: 20 } => '{"height":10,"width":20}'
  */
 function getJSON(obj) {
-    return JSON.stringify(obj)
+  return JSON.stringify(obj);
 }
 
 /**
@@ -234,9 +224,9 @@ function getJSON(obj) {
  *
  */
 function fromJSON(proto, json) {
-    const obj = JSON.parse(json)
-    Object.setPrototypeOf(obj, proto)
-    return obj
+  const obj = JSON.parse(json);
+  Object.setPrototypeOf(obj, proto);
+  return obj;
 }
 
 /**
@@ -266,12 +256,12 @@ function fromJSON(proto, json) {
  *    ]
  */
 function sortCitiesArray(arr) {
-    return arr.sort((a, b) => {
-        if (a.country === b.country) {
-            return a.city.localeCompare(b.city) // If countries are the same, sort by city
-        }
-        return a.country.localeCompare(b.country) // Otherwise, sort by country
-    })
+  return arr.sort((a, b) => {
+    if (a.country === b.country) {
+      return a.city.localeCompare(b.city); // If countries are the same, sort by city
+    }
+    return a.country.localeCompare(b.country); // Otherwise, sort by country
+  });
 }
 
 /**
@@ -305,18 +295,18 @@ function sortCitiesArray(arr) {
  *   }
  */
 function group(array, keySelector, valueSelector) {
-    return array.reduce((map, item) => {
-        const key = keySelector(item)
-        const value = valueSelector(item)
+  return array.reduce((map, item) => {
+    const key = keySelector(item);
+    const value = valueSelector(item);
 
-        if (!map.has(key)) {
-            map.set(key, [])
-        }
+    if (!map.has(key)) {
+      map.set(key, []);
+    }
 
-        map.get(key).push(value)
+    map.get(key).push(value);
 
-        return map
-    }, new Map())
+    return map;
+  }, new Map());
 }
 
 /**
@@ -374,48 +364,48 @@ function group(array, keySelector, valueSelector) {
  */
 
 const cssSelectorBuilder = {
-    element(/* value */) {
-        throw new Error('Not implemented')
-    },
+  element(/* value */) {
+    throw new Error('Not implemented');
+  },
 
-    id(/* value */) {
-        throw new Error('Not implemented')
-    },
+  id(/* value */) {
+    throw new Error('Not implemented');
+  },
 
-    class(/* value */) {
-        throw new Error('Not implemented')
-    },
+  class(/* value */) {
+    throw new Error('Not implemented');
+  },
 
-    attr(/* value */) {
-        throw new Error('Not implemented')
-    },
+  attr(/* value */) {
+    throw new Error('Not implemented');
+  },
 
-    pseudoClass(/* value */) {
-        throw new Error('Not implemented')
-    },
+  pseudoClass(/* value */) {
+    throw new Error('Not implemented');
+  },
 
-    pseudoElement(/* value */) {
-        throw new Error('Not implemented')
-    },
+  pseudoElement(/* value */) {
+    throw new Error('Not implemented');
+  },
 
-    combine(/* selector1, combinator, selector2 */) {
-        throw new Error('Not implemented')
-    },
-}
+  combine(/* selector1, combinator, selector2 */) {
+    throw new Error('Not implemented');
+  },
+};
 
 module.exports = {
-    shallowCopy,
-    mergeObjects,
-    removeProperties,
-    compareObjects,
-    isEmptyObject,
-    makeImmutable,
-    makeWord,
-    sellTickets,
-    Rectangle,
-    getJSON,
-    fromJSON,
-    group,
-    sortCitiesArray,
-    cssSelectorBuilder,
-}
+  shallowCopy,
+  mergeObjects,
+  removeProperties,
+  compareObjects,
+  isEmptyObject,
+  makeImmutable,
+  makeWord,
+  sellTickets,
+  Rectangle,
+  getJSON,
+  fromJSON,
+  group,
+  sortCitiesArray,
+  cssSelectorBuilder,
+};
